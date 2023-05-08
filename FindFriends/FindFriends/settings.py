@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import yaml
+import errno
+import os
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -23,8 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 config_file = Path('../FindFriends/config.yaml')
 if config_file.exists():
-    with config_file.open():
-        config = yaml.load(config_file, yaml.SafeLoader)
+    with config_file.open() as cf:
+        config = yaml.safe_load(cf)
+else:
+    raise FileNotFoundError(errno.ENOENT, os.strerror(errno.ENOENT), 'config.yaml')
 
 SECRET_KEY = config['django']['key']
 
@@ -43,6 +47,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'ClientServerCommunication',
     'rest_framework',
 ]
