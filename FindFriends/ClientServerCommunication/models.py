@@ -13,7 +13,7 @@ class Friendship(models.Model):
     second_user = models.ForeignKey(User, related_name='%(app_label)s_%(class)s_second_user', on_delete=models.CASCADE)
 
     def save(self, *args, **kwargs):
-        if self.first_user.id > self.second_user.id:
+        if self.first_user.pk > self.second_user.pk:
             self.first_user, self.second_user = self.second_user, self.first_user
 
         super(Friendship, self).save(*args, **kwargs)
@@ -29,7 +29,7 @@ class Request(models.Model):
     status = models.CharField(max_length=1, choices=Status.choices, default='O')
 
     def save(self, *args, **kwargs):
-        reverse = Request.objects.filter(sender=self.reciver, reciver=self.sender)
+        reverse = Request.objects.filter(sender=self.receiver, receiver=self.sender)
         if reverse.exists():
             self.status = 'C'
             reverse.update(status='C')
