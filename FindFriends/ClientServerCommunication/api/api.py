@@ -13,6 +13,15 @@ class UserViewSet(viewsets.ModelViewSet):
     ]
     serializer_class = UserSerializer
 
+    @action(detail=True, methods=['get'])
+    def friends(self, request, pk=None):
+        user = self.get_object()
+        friendships_by_user = Friendship.objects.filter(Q(first_user=user) | Q(second_user=user))
+        user_friends = [i.first_user if i.first_user != user else i.second_user for i in friendships_by_user]
+        user_friends_json = UserSerializer(user_friends, many=True)
+
+        return Response(user_friends_json .data)
+
 
 class FriendshipViewSet(viewsets.ModelViewSet):
     queryset = Friendship.objects.all()

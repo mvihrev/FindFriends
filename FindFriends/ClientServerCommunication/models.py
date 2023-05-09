@@ -1,4 +1,6 @@
 from django.db import models
+from rest_framework import serializers
+from django.core.exceptions import ValidationError
 
 
 class User(models.Model):
@@ -12,7 +14,15 @@ class Friendship(models.Model):
     first_user = models.ForeignKey(User, related_name='%(app_label)s_%(class)s_first_user', on_delete=models.CASCADE)
     second_user = models.ForeignKey(User, related_name='%(app_label)s_%(class)s_second_user', on_delete=models.CASCADE)
 
+    def clean(self):
+        if self.first_user == self.second_user:
+            response = serializers.ValidationError({'message': 'You can not add yourself as a friend'})
+            response.status_code = 200
+
+            raise response
+
     def save(self, *args, **kwargs):
+        self.clean()
         if self.first_user.pk > self.second_user.pk:
             self.first_user, self.second_user = self.second_user, self.first_user
 
