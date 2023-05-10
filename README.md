@@ -26,11 +26,12 @@
   
 ### Запуск проекта 
 1. Скачиваем проект ```git clone https://github.com/mvihrev/FindFriends```
-2. Создаем виртуальное окружение ```python3 -m venv env```
-3. Включаем виртуальное окружение ```source env/bin/activate```
-4. Устанавливаем необходимые библиотеки ```pip install -r requirements.txt```
-5. Создаем базу данных ```python3 manage.py makemigrations``` и ```python3 manage.py migrate```
-6. Запускаем локальный сервер ```python3 manage.py runserver```
+2. Переходим в нужную папку ```cd FindFriends/FindFriends/```
+3. Создаем виртуальное окружение ```python3 -m venv env```
+4. Включаем виртуальное окружение ```source env/bin/activate```
+5. Устанавливаем необходимые библиотеки ```pip install -r requirements.txt```
+6. Создаем базу данных ```python3 manage.py makemigrations``` и ```python3 manage.py migrate```
+7. Запускаем локальный сервер ```python3 manage.py runserver```
 
 ### Использование API
 Для просмотра документации OpenAPI достаточно перейти по ссылке http://127.0.0.1:8000/api/schema/swagger-ui/#/ или открыть файл `schema.yml`
