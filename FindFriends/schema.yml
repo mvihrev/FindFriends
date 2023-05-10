@@ -1,0 +1,640 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /friendships/:
+    get:
+      operationId: friendships_list
+      tags:
+      - friendships
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Friendship'
+          description: ''
+    post:
+      operationId: friendships_create
+      tags:
+      - friendships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Friendship'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Friendship'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Friendship'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Friendship'
+          description: ''
+  /friendships/{id}/:
+    get:
+      operationId: friendships_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this friendship.
+        required: true
+      tags:
+      - friendships
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Friendship'
+          description: ''
+    put:
+      operationId: friendships_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this friendship.
+        required: true
+      tags:
+      - friendships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Friendship'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Friendship'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Friendship'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Friendship'
+          description: ''
+    patch:
+      operationId: friendships_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this friendship.
+        required: true
+      tags:
+      - friendships
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedFriendship'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedFriendship'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedFriendship'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Friendship'
+          description: ''
+    delete:
+      operationId: friendships_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this friendship.
+        required: true
+      tags:
+      - friendships
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /requests/:
+    get:
+      operationId: requests_list
+      tags:
+      - requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Request'
+          description: ''
+    post:
+      operationId: requests_create
+      tags:
+      - requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Request'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Request'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request'
+          description: ''
+  /requests/{id}/:
+    get:
+      operationId: requests_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this request.
+        required: true
+      tags:
+      - requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request'
+          description: ''
+    put:
+      operationId: requests_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this request.
+        required: true
+      tags:
+      - requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Request'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Request'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Request'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request'
+          description: ''
+    patch:
+      operationId: requests_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this request.
+        required: true
+      tags:
+      - requests
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedRequest'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedRequest'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedRequest'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Request'
+          description: ''
+    delete:
+      operationId: requests_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this request.
+        required: true
+      tags:
+      - requests
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /users/:
+    get:
+      operationId: users_list
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+          description: ''
+    post:
+      operationId: users_create
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /users/{username}/:
+    get:
+      operationId: users_retrieve
+      parameters:
+      - in: path
+        name: username
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    put:
+      operationId: users_update
+      parameters:
+      - in: path
+        name: username
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/User'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    patch:
+      operationId: users_partial_update
+      parameters:
+      - in: path
+        name: username
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUser'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+    delete:
+      operationId: users_destroy
+      parameters:
+      - in: path
+        name: username
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '204':
+          description: No response body
+  /users/{username}/friends/:
+    get:
+      operationId: users_friends_retrieve
+      parameters:
+      - in: path
+        name: username
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /users/{username}/incoming/:
+    get:
+      operationId: users_incoming_retrieve
+      parameters:
+      - in: path
+        name: username
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /users/{username}/outgoing/:
+    get:
+      operationId: users_outgoing_retrieve
+      parameters:
+      - in: path
+        name: username
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+  /users/{username}/status/:
+    get:
+      operationId: users_status_retrieve
+      parameters:
+      - in: path
+        name: username
+        schema:
+          type: string
+        description: A unique value identifying this user.
+        required: true
+      tags:
+      - users
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ''
+components:
+  schemas:
+    Friendship:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_user:
+          type: string
+        second_user:
+          type: string
+      required:
+      - first_user
+      - id
+      - second_user
+    PatchedFriendship:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        first_user:
+          type: string
+        second_user:
+          type: string
+    PatchedRequest:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        sender:
+          type: string
+        receiver:
+          type: string
+    PatchedUser:
+      type: object
+      properties:
+        username:
+          type: string
+          maxLength: 32
+    Request:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        status:
+          $ref: '#/components/schemas/StatusEnum'
+        sender:
+          type: string
+        receiver:
+          type: string
+      required:
+      - id
+      - receiver
+      - sender
+    StatusEnum:
+      enum:
+      - O
+      - C
+      type: string
+      description: |-
+        * `O` - Open
+        * `C` - Closed
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+          maxLength: 32
+      required:
+      - username
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

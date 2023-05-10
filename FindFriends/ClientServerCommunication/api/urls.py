@@ -3,8 +3,8 @@ from .api import UserViewSet, FriendshipViewSet, RequestViewSet
 
 router = routers.DefaultRouter()
 
-router.register('users', UserViewSet, 'users')
-router.register('friendships', FriendshipViewSet, 'friendships')
-router.register('requests', RequestViewSet, 'requests')
+router.register('api/users', UserViewSet, 'users')
+router.register('api/friendships', FriendshipViewSet, 'friendships')
+router.register('api/requests', RequestViewSet, 'requests')
 
 urlpatterns = router.urls
